@@ -1,0 +1,36 @@
+{
+    "movies":[
+        {
+            "id": 1,
+            "Name": "Top Gun: Maverick",
+            "Release Date": 2022,
+            "Actors": "Tom Cruise, Jennifer Connelly",
+            "Image":"Maverick.jpg",
+            "Rating out of 5 stars":4
+        },
+        {
+            "id": 2,
+            "Name": "The dance of life",
+            "Release Date": 2012,
+            "Actors": "Jean Gabin",
+            "Image":"Dance.jpg",
+            "Rating out of 5 stars":3
+        },
+        {
+            "id": 3,
+            "Name": "Crash Landing on You",
+            "Release Date": 2019,
+            "Actors": "Huyn Bin, Son Ye-jin",
+            "Image":"Dance.jpg",
+            "Rating out of 5 stars":5
+        },
+        {
+            "id": 4,
+            "Name": "Autumn in My Heart",
+            "Release Date": 2000,
+            "Actors": "Won Bin, Song Hye-kyo",
+            "Image":"Autumn.jpg",
+            "Rating out of 5 stars":4.5
+        }
+    ]
+}
