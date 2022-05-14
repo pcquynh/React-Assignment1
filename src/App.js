@@ -15,8 +15,12 @@ function App() {
   }, []);
 
   const removeMovies = (movie) => {
-    const updatedMovies = movies.filter((m) => m.id != movie.id);
+    const updatedMovies = movies.filter((m) => m.id !== movie.id);
     setMovies(updatedMovies);
+  };
+
+  const addMovie = (movie) => {
+    setMovies([...movies, movie]);
   };
 
   return (
@@ -26,7 +30,7 @@ function App() {
           path="/"
           element={<Home movies={movies} onChangeMovies={removeMovies} />}
         />
-        <Route path="/addReview" element={<AddReview />} />
+        <Route path="/addReview" element={<AddReview addMovie={addMovie} />} />
       </Routes>
     </div>
   );

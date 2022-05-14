@@ -2,35 +2,35 @@
     
         {
             "id": 1,
-            "Name": "Top Gun: Maverick",
-            "Date": 2022,
-            "Actors": ["Tom Cruise", "Jennifer Connelly"],
-            "Image":"images/Maverick.jpg",
-            "Rating":4
+            "name": "Top Gun: Maverick",
+            "date": 2022,
+            "actor": ["Tom Cruise", "Jennifer Connelly"],
+            "poster":"images/Maverick.jpg",
+            "rating":4
         },
         {
             "id": 2,
-            "Name": "Fast and Furious 6",
-            "Date": 2013,
-            "Actors": ["Vin Diesel", "Paul Walker", "Michelle Rodriguez"],
-            "Image":"images/Fast.jpg",
-            "Rating":4
+            "name": "Fast and Furious 6",
+            "date": 2013,
+            "actor": ["Vin Diesel", "Paul Walker", "Michelle Rodriguez"],
+            "poster":"images/Fast.jpg",
+            "rating":4
         },
         {
             "id": 3,
-            "Name": "Crash Landing on You",
-            "Date": 2019,
-            "Actors": ["Huyn Bin", "Son Ye-jin"],
-            "Image":"images/Landing.jpg",
-            "Rating":5
+            "name": "Crash Landing on You",
+            "date": 2019,
+            "actor": ["Huyn Bin", "Son Ye-jin"],
+            "poster":"images/Landing.jpg",
+            "rating":5
         },
         {
             "id": 4,
-            "Name": "Autumn in My Heart",
-            "Date": 2000,
-            "Actors": ["Won Bin", "Song Hye-kyo"],
-            "Image":"images/Autumn.jpg",
-            "Rating":4.5
+            "name": "Autumn in My Heart",
+            "date": 2000,
+            "actor": ["Won Bin", "Song Hye-kyo"],
+            "poster":"images/Autumn.jpg",
+            "rating":4.5
         }
     
 ]
