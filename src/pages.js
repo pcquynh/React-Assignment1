@@ -46,6 +46,11 @@ export function AddReview({ addMovie }) {
   };
   const submitForm = (e) => {
     e.preventDefault();
+
+    if (name == "" || date == "" || actor == "" || rating == "") {
+      alert("Please fill all fields.");
+      return;
+    }
     const id = uuidv4();
     addMovie({ id, name, date, actor, poster, rating });
     navigate("/");
