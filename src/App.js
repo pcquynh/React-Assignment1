@@ -14,12 +14,17 @@ function App() {
       .catch((e) => console.log(e.message));
   }, []);
 
+  const removeMovies = (movie) => {
+    const updatedMovies = movies.filter((m) => m.id != movie.id);
+    setMovies(updatedMovies);
+  };
+
   return (
     <div>
       <Routes>
         <Route
           path="/"
-          element={<Home movies={movies} setMovies={setMovies} />}
+          element={<Home movies={movies} onChangeMovies={removeMovies} />}
         />
         <Route path="/addReview" element={<AddReview />} />
       </Routes>

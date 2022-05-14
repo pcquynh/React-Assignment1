@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 export function Home({ movies = [], onChangeMovies = (f) => f }) {
   if (movies === null || movies === undefined)
     return <h2>No movies availble</h2>;
+
   return (
     <>
       <section>
@@ -20,7 +21,7 @@ export function Home({ movies = [], onChangeMovies = (f) => f }) {
               {movie.Actors}
               <img src={movie.Image} alt={movie.Name} />
               {movie.Rating}
-              <button>Remove</button>
+              <button onClick={() => onChangeMovies(movie)}>Remove</button>
             </li>
           ))}
         </ul>
