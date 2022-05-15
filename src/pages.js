@@ -10,6 +10,7 @@ import {
   Nav,
   Form,
   Container,
+  Row,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 
@@ -30,10 +31,10 @@ export function Home({ movies = [], onChangeMovies = (f) => f }) {
         </Nav>
         <h2 className="text-center mt-4 mb-4">Movie Review</h2>
 
-        <ul>
-          {movies.map((movie) => (
-            <li key={movie.id}>
-              <Card style={{ width: "18rem" }}>
+        <Container>
+          <Row xs={2} md={4} lg={6} className="justify-content-center">
+            {movies.map((movie) => (
+              <Card key={movie.id} style={{ width: "18rem" }} className="mb-4">
                 <Card.Img variant="top" src={movie.poster} alt={movie.name} />
                 <Card.Body>
                   <Card.Title>{movie.name}</Card.Title>
@@ -54,9 +55,9 @@ export function Home({ movies = [], onChangeMovies = (f) => f }) {
                   </Button>
                 </Card.Body>
               </Card>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </Row>
+        </Container>
       </section>
     </>
   );
