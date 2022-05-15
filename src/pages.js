@@ -1,7 +1,17 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import {
+  Card,
+  ListGroup,
+  ListGroupItem,
+  Button,
+  Nav,
+  Form,
+  Container,
+} from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.css";
 
 export function Home({ movies = [], onChangeMovies = (f) => f }) {
   if (movies === null || movies === undefined)
@@ -10,20 +20,40 @@ export function Home({ movies = [], onChangeMovies = (f) => f }) {
   return (
     <>
       <section>
-        <h1>Movie's Review</h1>
-        <nav>
-          <Link to="addReview">Add Review</Link>
-        </nav>
+        <Nav variant="pills" defaultActiveKey="/home">
+          <Nav.Item>
+            <Nav.Link href="/">Home</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="/Addreview">Add review</Nav.Link>
+          </Nav.Item>
+        </Nav>
+        <h2 className="text-center mt-4 mb-4">Movie Review</h2>
 
         <ul>
           {movies.map((movie) => (
             <li key={movie.id}>
-              {movie.name}
-              {movie.date}
-              {movie.actor}
-              <img src={movie.poster} alt={movie.name} />
-              {movie.rating}
-              <button onClick={() => onChangeMovies(movie)}>Remove</button>
+              <Card style={{ width: "18rem" }}>
+                <Card.Img variant="top" src={movie.poster} alt={movie.name} />
+                <Card.Body>
+                  <Card.Title>{movie.name}</Card.Title>
+                </Card.Body>
+                <ListGroup className="list-group-flush">
+                  <ListGroupItem>Date of release: {movie.date}</ListGroupItem>
+                  <ListGroupItem>Actors: {movie.actor}</ListGroupItem>
+                  <ListGroupItem>
+                    Rating out of 5 star: {movie.rating}{" "}
+                  </ListGroupItem>
+                </ListGroup>
+                <Card.Body>
+                  <Button
+                    variant="danger"
+                    onClick={() => onChangeMovies(movie)}
+                  >
+                    Remove
+                  </Button>
+                </Card.Body>
+              </Card>
             </li>
           ))}
         </ul>
@@ -47,7 +77,7 @@ export function AddReview({ addMovie }) {
   const submitForm = (e) => {
     e.preventDefault();
 
-    if (name == "" || date == "" || actor == "" || rating == "") {
+    if (name === "" || date === "" || actor === "" || rating === "") {
       alert("Please fill all fields.");
       return;
     }
@@ -58,58 +88,67 @@ export function AddReview({ addMovie }) {
 
   return (
     <section>
-      <h1>Add Review</h1>
-      <nav>
-        <Link to="/">Return Home</Link>
-      </nav>
-      <form onSubmit={submitForm}>
-        <label>Movie Name:</label>
-        <input
-          type="text"
-          name="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-
-        <br />
-        <label>Date Release:</label>
-        <input
-          type="text"
-          name="Date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
-
-        <br />
-        <label>Actors:</label>
-        <input
-          type="text"
-          name="Actor"
-          value={actor}
-          onChange={(e) => setActor(e.target.value)}
-        />
-
-        <br />
-        <label>Poster: </label>
-        <select value={poster} onChange={(e) => changePoster(e.target.value)}>
-          <option value="images/Maverick.jpg">Picture 1</option>
-          <option value="images/Fast.jpg">Picture 2</option>
-          <option value="images/Landing.jpg">Picture 3</option>
-          <option value="images/Autumn.jpg">Picture 4</option>
-        </select>
-
-        <br />
-        <label>Rating out of 5 stars:</label>
-        <input
-          type="text"
-          name="Rating"
-          value={rating}
-          onChange={(e) => setRating(e.target.value)}
-        />
-
-        <br />
-        <input type="submit" value="Submit" />
-      </form>
+      <Nav variant="pills" defaultActiveKey="/home">
+        <Nav.Item>
+          <Nav.Link href="/">Home</Nav.Link>
+        </Nav.Item>
+      </Nav>
+      <h2 className="text-center mt-4 mb-4">Add movie review</h2>
+      <Container>
+        <Form>
+          <Form.Group className="mb-3" controlId="formGroupName">
+            <Form.Label>Movie Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter movie name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formGroupDate">
+            <Form.Label>Date Release</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter movie release date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formGroupActors">
+            <Form.Label>Actors</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter movie actors"
+              value={actor}
+              onChange={(e) => setActor(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formGroupRating">
+            <Form.Label>Rating out of 5 star</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter movie rating"
+              value={rating}
+              onChange={(e) => setRating(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formGroupPoster">
+            <Form.Label>Poster</Form.Label>
+            <Form.Select
+              value={poster}
+              onChange={(e) => changePoster(e.target.value)}
+            >
+              <option value="images/Maverick.jpg">Picture 1</option>
+              <option value="images/Fast.jpg">Picture 2</option>
+              <option value="images/Landing.jpg">Picture 3</option>
+              <option value="images/Autumn.jpg">Picture 4</option>
+            </Form.Select>
+          </Form.Group>
+        </Form>
+        <Button variant="primary" type="submit" onClick={submitForm}>
+          Submit
+        </Button>
+      </Container>
     </section>
   );
 }
